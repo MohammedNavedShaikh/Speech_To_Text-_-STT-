@@ -1,0 +1,10 @@
+deep-translator
+flask
+flask-cors
+openai
+whisper
+pyaudio
+git+https://github.com/openai/whisper.git
+langchain-groq
+python-dotenv
+indic-transliteration

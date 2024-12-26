@@ -1,0 +1,50 @@
+<!-- app\templates\index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload or Record Audio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Audio Transcription</h1>
+        <div class="form-group">
+            <label for="file">Upload Audio File</label>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept="audio/*" required>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+
+        <div id="recording-controls">
+            <button id="startBtn">Start Recording</button>
+            <button id="stopBtn" disabled>Stop Recording</button>
+        </div>
+
+        <div id="timer">00:00</div>
+
+        <form id="recordingForm" action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" id="audioFileInput" name="file" style="display: none;" />
+            <button type="button" id="sendBtn" disabled>Send Recording</button>
+        </form>
+
+        {% if error_message %}
+        <div id="error-popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <p>{{ error_message }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div id="message" class="error"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
