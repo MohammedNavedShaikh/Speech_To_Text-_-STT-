@@ -140,8 +140,6 @@ pyaudio
 git+https://github.com/openai/whisper.git
 langchain-groq
 python-dotenv
-indic-transliteration
-torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 retrying
 ```
 
