@@ -1,3 +1,6 @@
+
+---
+
 # Speech To Text Conversion
 
 ## Overview
@@ -18,7 +21,7 @@ The **Speech To Text Conversion** is a Flask-based web application that utilizes
 
 - **Speech to Text**: Convert speech to text using OpenAI Whisper.
 - **Audio Upload and Recording**: Upload pre-recorded audio files or record audio in real-time.
-- **Real-time Transcription**: Display transcription of real time recorded audio.
+- **Real-time Transcription**: Display transcription of real-time recorded audio.
 - **Text Refinement**: The transcribed text is polished and refined using an LLM hosted on Groq Cloud.
 - **Responsive Frontend**: The UI is built with HTML, CSS, and JavaScript, ensuring a smooth user experience.
 - **Error Handling**: Comprehensive error handling for seamless functionality.
@@ -55,6 +58,9 @@ pip install -r requirements.txt
 Create a `.env` file in the root directory of the project and add the following keys:
 ```bash
 GROQ_API_KEY="YOUR-GROQ-API-KEY"
+GOOGLE_API_KEY="YOUR-GOOGLE-API-KEY"
+MODEL_NAME="Llama3-8b-8192"
+WHISPER_MODEL_NAME="medium"
 ```
 
 ### 5. Install FFmpeg (for Windows users)
@@ -71,14 +77,6 @@ Start the application:
 python run.py
 ```
 
-## How It Works
-
-- **Audio Input**: Users can upload audio files or record audio in real-time. 
-- **Whisper API**: The audio is passed through the Whisper API, which transcribes the speech into text.
-- **Text Refinement**: The transcribed text is passed to a language model hosted on Groq Cloud, where it is refined and polished.
-- **Real-Time Transcription**: Display transcription of real time recorded audio.
-- **Frontend**: The web interface allows users to interact with the application, upload files, and view the transcriptions.
-
 ## Example Use Case
 
 1. **Upload**: Users upload an audio file or record real-time audio.
@@ -88,8 +86,7 @@ python run.py
 
 ![STT-1](https://github.com/user-attachments/assets/0c84a716-05fd-4f8c-929c-eed972d273de)
 ![STT-2](https://github.com/user-attachments/assets/1f7a52bf-efff-4e3a-8b0e-d1b7eae41cd5)
-
-
+![STT-3](https://github.com/user-attachments/assets/cee24a1f-0ee9-4cac-b311-1f4b2b3892ca)
 
 ## Project Structure
 ```
@@ -101,11 +98,11 @@ Speech_To_Text_Conversion/
 │   │   ├── __init__.py
 │   │   ├── error_routes.py
 │   │   ├── home_routes.py
-│   │   ├── transcribe_routes.py
 │   │   ├── upload_routes.py
 │   ├── services
 │   │   ├── __pycache__
 │   │   ├── __init__.py
+│   │   ├── logger_service.py
 │   │   ├── refinement_service.py
 │   │   ├── transcription_service.py
 │   ├── static
@@ -119,20 +116,42 @@ Speech_To_Text_Conversion/
 │   ├── main.py
 │   ├── model.py
 │   ├── prompt.py
+├── Demo_Audio
 ├── uploads
+├── venv
 ├── .env
 ├── config.py
 ├── logger.py
+├── requirements.txt
 ├── run.py
+```
+
+## Requirements
+
+Here are the required dependencies for this project:
+
+```
+deep-translator
+flask
+flask-cors
+openai
+whisper
+pyaudio
+git+https://github.com/openai/whisper.git
+langchain-groq
+python-dotenv
+indic-transliteration
+torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+retrying
 ```
 
 ## Support
 
 If you encounter any issues while setting up or using the Speech To Text Conversion application, feel free to reach out for assistance.
 
-- **Contact**: Mohammed Naved Shaikh
-- **Email**: naveds1049@gmail.com
+- **Contact**: Mohammed Naved Shaikh | Shahnoor Maniyar
+- **Email**: naveds1049@gmail.com | shahnoorm685@gmail.com
 
 We're here to help with any queries, bugs, or feature requests!
 
----
+--- 
