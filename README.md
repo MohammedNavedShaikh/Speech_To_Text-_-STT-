@@ -32,7 +32,7 @@ Follow the steps below to set up the project locally:
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.10.10
 - FFmpeg for audio processing (for Windows users, Scoop is used to install it)
 
 ### 1. Clone the repository
